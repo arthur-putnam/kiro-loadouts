@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Block Dangerous Commands",
+  "description": "Prevents execution of catastrophic bash commands like rm -rf ~, fork bombs, curl piping to shell, force push to main, and other dangerous operations",
+  "version": "1",
+  "when": {
+    "type": "preToolUse",
+    "toolTypes": [
+      "shell"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "SECURITY CHECK: Review this shell command for dangerous patterns including: rm -rf ~ or rm -rf /, fork bombs, curl | sh, force push to main/master, git reset --hard, chmod 777, sudo rm commands. If ANY dangerous pattern is detected, you MUST DENY execution and explain the risk. Only approve if the command is completely safe."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Dependency Update Check",
+  "description": "Check for outdated dependencies and suggest updates following dependency management best practices",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Check for outdated dependencies in package.json, requirements.txt, Gemfile, or other dependency files. Analyze current versions, identify outdated packages, check for security vulnerabilities, and suggest updates following best practices. Consider semantic versioning, breaking changes, and compatibility when recommending updates."
+  }
+}

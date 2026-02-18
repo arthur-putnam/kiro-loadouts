@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Tooling & Quality Audit",
+  "description": "Performs a comprehensive audit of developer tools, linters, formatters, test tooling, security scanners, and project hygiene. Evaluates completeness and provides prioritized recommendations for improvements.",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "You are performing a full tooling and quality audit of this repository. Your goal is to evaluate whether the project is using appropriate developer tools, linters, formatters, test tooling, and security scanners for its language and ecosystem, and to recommend improvements.\n\nFollow these steps:\n\n1. Detect project stack\n   - Identify primary language(s)\n   - Identify framework(s)\n   - Identify package manager(s)\n   - Identify build/test tooling\n   - Identify CI/CD configuration\n   - Identify containerization or deployment setup\n\n2. Audit code quality tooling\n   - Check for linters (e.g., ESLint, flake8, ruff, pylint, golangci-lint, etc.)\n   - Check for formatters (Prettier, Black, gofmt, etc.)\n   - Check for type checking (TypeScript, mypy, pyright, etc.)\n   - Check for test frameworks and coverage tools\n   - Check for pre-commit hooks or git hooks\n   - Check for static analysis tools\n\n3. Audit security tooling\n   - Check for dependency vulnerability scanners (Dependabot, npm audit, pip-audit, osv-scanner, etc.)\n   - Check for secrets scanning (gitleaks, trufflehog, etc.)\n   - Check for SAST tools\n   - Check for container security scanning if Docker is present\n   - Check CI pipelines for automated security checks\n\n4. Audit project hygiene\n   - Check for unused dependencies\n   - Check for dead or orphaned code\n   - Check for consistent formatting configuration\n   - Check for documentation on development workflow\n   - Check for reproducible environment setup\n\n5. Evaluate completeness\n   - Identify missing but recommended tooling\n   - Identify redundant or conflicting tools\n   - Identify outdated or misconfigured tools\n\n6. Make recommendations\n   - Suggest specific tools appropriate for the stack\n   - Suggest integration into CI\n   - Suggest developer workflow improvements\n   - Suggest automation opportunities\n   - Rank recommendations by impact (High / Medium / Low)\n\nOutput format: Provide a structured report with sections:\n- Project Summary\n- Current Tooling Found\n- Gaps and Risks\n- Recommendations\n  - Quick Wins\n  - Long Term Improvements\n\nBase all recommendations on the actual project stack and repository contents. Do not suggest generic tools without explaining why they fit this project."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Update Docstrings on Agent Stop",
+  "description": "Automatically updates or adds docstrings to all functions, classes, and modules in files modified during agent execution, following the project's existing docstring style",
+  "version": "1",
+  "when": {
+    "type": "agentStop"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Review all files modified in this session and update or add docstrings following these rules:\n1. Detect and follow the exact docstring style already used in the project (Google, NumPy, Sphinx, or custom)\n2. Do not introduce a new format\n3. Preserve all existing logic and behavior\n4. Improve existing docstrings if incomplete, incorrect, or unclear\n5. Add missing docstrings where needed\n6. Ensure docstrings describe: purpose, parameters and types, return values, raised exceptions, side effects\n7. Do not change function signatures, variable names, or code structure\n8. Keep wording concise, professional, and consistent\n9. Only modify docstrings and comments - do not alter executable code"
+  }
+}

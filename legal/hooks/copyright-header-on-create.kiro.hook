@@ -1,0 +1,38 @@
+{
+  "enabled": true,
+  "name": "Add Copyright Header on File Creation",
+  "description": "Automatically adds a copyright header to the top of newly created code files in all major programming languages",
+  "version": "1",
+  "when": {
+    "type": "fileCreated",
+    "patterns": [
+      "*.js",
+      "*.ts",
+      "*.jsx",
+      "*.tsx",
+      "*.py",
+      "*.java",
+      "*.cpp",
+      "*.c",
+      "*.h",
+      "*.cs",
+      "*.go",
+      "*.rs",
+      "*.rb",
+      "*.php",
+      "*.swift",
+      "*.kt",
+      "*.scala",
+      "*.html",
+      "*.css",
+      "*.scss",
+      "*.sql",
+      "*.sh",
+      "*.bash"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Add an appropriate copyright header to the top of this newly created file. Use the correct comment syntax for the file's programming language (e.g., // for JavaScript/TypeScript/Java/C++, # for Python/Ruby/Shell, /* */ for CSS, <!-- --> for HTML/XML). Include the current year and a standard copyright notice."
+  }
+}
