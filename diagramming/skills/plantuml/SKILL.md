@@ -12,38 +12,43 @@ metadata:
 
 This skill generates PlantUML diagram source files (`.puml`) and provides render commands so diagrams can be produced immediately. It covers all major diagram types and includes runtime setup guidance.
 
-## Runtime
+## Rendering workflow
 
-### Preferred: install script
-
-Use the bundled installer — it checks for Java, downloads the JAR if missing, verifies the checksum, and confirms everything works:
-
-```bash
-python .kiro/scripts/install_plantuml.py
-```
-
-Optional: specify a custom JAR destination:
-
-```bash
-python scripts/install_plantuml.py --dest /path/to/plantuml.jar
-```
-
-The script exits with code 0 when PlantUML is ready. If Java is missing it prints install instructions and exits non-zero. Run it before attempting to render any diagram.
-
-### Render after install
+After generating a `.puml` file, always attempt to render it immediately:
 
 ```bash
 java -jar plantuml.jar diagram.puml          # PNG output
 java -jar plantuml.jar -tsvg diagram.puml    # SVG output
 ```
 
-### Alternative: Docker (no Java required)
+If the render command fails (missing JAR, Java not found, etc.), run the bundled install script to set up PlantUML automatically:
+
+```bash
+python .kiro/skills/plantuml/scripts/install_plantuml.py
+```
+
+Optional: specify a custom JAR destination:
+
+```bash
+python .kiro/skills/plantuml/scripts/install_plantuml.py --dest /path/to/plantuml.jar
+```
+
+The script checks for Java, downloads the JAR if missing, verifies the checksum, and confirms everything works. It exits with code 0 when PlantUML is ready. After a successful install, retry the render command.
+
+If the install script also fails, inform the user that PlantUML dependencies need to be installed manually. PlantUML requires Java 8 or later. Point them to:
+
+- **Java**: <https://adoptium.net/> or their OS package manager (`brew install openjdk`, `apt install default-jdk`, etc.)
+- **PlantUML JAR**: <https://plantuml.com/download>
+
+### Alternative render methods
+
+#### Docker (no Java required)
 
 ```bash
 docker run --rm -v "$(pwd):/data" plantuml/plantuml diagram.puml
 ```
 
-### Alternative: npm (Node.js projects)
+#### npm (Node.js projects)
 
 ```bash
 npm install -g node-plantuml
