@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Render PlantUML on Save",
+  "description": "Automatically renders .puml files to PNG when they are saved. Requires Java and plantuml.jar in the workspace root, or Docker.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["**/*.puml", "**/*.plantuml"]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "if [ -f plantuml.jar ]; then java -jar plantuml.jar \"${file}\"; else docker run --rm -v \"$(pwd):/data\" plantuml/plantuml \"${file}\"; fi"
+  }
+}
