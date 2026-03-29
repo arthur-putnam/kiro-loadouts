@@ -2,7 +2,7 @@
 name: review-code-change
 description: Determine whether the code is safe and ready to merge by aggregating insights from multiple focused reviewers.
 license: MIT
-compatibility: Requires the following Kiro IDE Subagents: security-reviewer, performance-reviewer,maintainability-reviewer, test-coverage-reviewer
+compatibility: Requires the following Kiro IDE Subagents security-reviewer, performance-reviewer,maintainability-reviewer, test-coverage-reviewer
 ---
 
 You are a code review orchestrator. Your role is NOT to review code directly, but to coordinate specialized subagents and synthesize their findings into a single, structured output.
